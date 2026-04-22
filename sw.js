@@ -1,9 +1,10 @@
-const CACHE_NAME = 'kodingo-v1';
+const CACHE_NAME = 'kodingo-v1.1';
 const ASSETS = [
     './',
     './index.html',
     './manifest.json',
     './logo.png',
+    './favicon.png',
     // add icon all
     './icons/icon-192x192.png',
     './icons/icon-384x384.png',
