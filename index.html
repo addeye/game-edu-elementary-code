@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayo Belajar: SD Quiz & Coding</title>
+        <!-- Meta Tag PWA -->
+    <meta name="theme-color" content="#4F46E5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>Kodingo: Level SD</title>
+
+    <!-- Link ke Manifest -->
+    <link rel="manifest" href="manifest.json">
     
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
     
@@ -220,7 +228,7 @@
         <canvas id="confetti-canvas"></canvas>
         
         <div class="header">
-            <div style="font-weight:800; color:var(--primary);">Belajar SD</div>
+            <div style="font-weight:800; color:var(--primary);">Kodingo</div>
             <div class="score-badge">Skor: <span id="score-display">0</span></div>
         </div>
 
@@ -228,6 +236,11 @@
             
             <!-- MENU SCREEN -->
             <div id="menu-screen" class="screen active">
+                <!-- image icon -->
+                <div class="logo-icon">
+                    <img  src="/logo.png" alt="Kodingo Logo" style="width: 120px; margin-bottom: 20px;">
+                </div>
+
                 <h1 class="hero-title">Hai Teman!👋</h1>
                 <p style="margin-bottom: 30px; color: var(--text-sub);">Pilih pelajaran seru hari ini</p>
                 
@@ -328,27 +341,72 @@
             },
 
             englishData: [
-                { word: "Cat", indo: "Kucing", options: ["Dog", "Cat", "Bird", "Fish"] },
-                { word: "Apple", indo: "Apel", options: ["Mango", "Banana", "Apple", "Grape"] },
-                { word: "Red", indo: "Merah", options: ["Blue", "Green", "Red", "Yellow"] },
-                { word: "Book", indo: "Buku", options: ["Pencil", "Book", "Ruler", "Bag"] },
-                { word: "Sun", indo: "Matahari", options: ["Moon", "Star", "Cloud", "Sun"] },
-                { word: "Car", indo: "Mobil", options: ["Bike", "Bus", "Car", "Train"] },
-                { word: "Happy", indo: "Senang", options: ["Sad", "Happy", "Angry", "Tired"] },
-                { word: "Water", indo: "Air", options: ["Fire", "Earth", "Wind", "Water"] },
-                { word: "One", indo: "Satu", options: ["Two", "Ten", "Five", "One"] },
-                { word: "Tree", indo: "Pohon", options: ["Flower", "Grass", "Tree", "Leaf"] }
+                { word: "Head", indo: "Kepala", options: ["Hand", "Foot", "Head", "Nose"] },
+                { word: "Eye", indo: "Mata", options: ["Ear", "Eye", "Mouth", "Nose"] },
+                { word: "Hand", indo: "Tangan", options: ["Leg", "Finger", "Hand", "Shoulder"] },
+                { word: "Pencil", indo: "Pensil", options: ["Eraser", "Pencil", "Sharpener", "Pen"] },
+                { word: "Chair", indo: "Kursi", options: ["Table", "Chair", "Door", "Window"] },
+                { word: "Teacher", indo: "Guru", options: ["Doctor", "Teacher", "Driver", "Farmer"] },
+                { word: "Pencil", indo: "Pensil", options: ["Eraser", "Pencil", "Sharpener", "Pen"] },
+                { word: "Chair", indo: "Kursi", options: ["Table", "Chair", "Door", "Window"] },
+                { word: "Teacher", indo: "Guru", options: ["Doctor", "Teacher", "Driver", "Farmer"] },
+                { word: "Elephant", indo: "Gajah", options: ["Giraffe", "Elephant", "Tiger", "Lion"] },
+                { word: "Butterfly", indo: "Kupu-kupu", options: ["Bee", "Ant", "Butterfly", "Spider"] },
+                { word: "Duck", indo: "Bebek", options: ["Chicken", "Duck", "Goose", "Bird"] },
+                { word: "Banana", indo: "Pisang", options: ["Orange", "Melon", "Banana", "Apple"] },
+                { word: "Milk", indo: "Susu", options: ["Tea", "Coffee", "Water", "Milk"] },
+                { word: "Bread", indo: "Roti", options: ["Rice", "Noodle", "Bread", "Cake"] },
+                { word: "Read", indo: "Membaca", options: ["Write", "Read", "Sleep", "Run"] },
+                { word: "Eat", indo: "Makan", options: ["Drink", "Eat", "Wash", "Jump"] },
+                { word: "Sleep", indo: "Tidur", options: ["Sit", "Stand", "Sleep", "Walk"] },
             ],
 
             // Logic Levels Data
             logicLevels: [
-                { size: 3, start: {x:0, y:0}, end: {x:2, y:0}, walls: [], hint: "Arahkan ke kanan 2 kali" },
-                { size: 3, start: {x:0, y:0}, end: {x:2, y:2}, walls: [], hint: "Ke bawah lalu ke kanan" },
-                { size: 3, start: {x:2, y:2}, end: {x:0, y:0}, walls: [], hint: "Ke kiri lalu ke atas" },
-                { size: 3, start: {x:0, y:0}, end: {x:2, y:2}, walls: [{x:1, y:0}, {x:0, y:1}], hint: "Hati-hati tembok!" },
-                { size: 3, start: {x:0, y:2}, end: {x:2, y:0}, walls: [{x:1, y:1}], hint: "Lewati samping tembok" },
-                { size: 4, start: {x:0, y:0}, end: {x:3, y:3}, walls: [{x:1, y:0}, {x:1, y:1}, {x:1, y:2}], hint: "Kelilingkan!" },
-                { size: 4, start: {x:0, y:3}, end: {x:3, y:0}, walls: [{x:2, y:1}, {x:2, y:2}], hint: "Pikirkan jalurnya..." },
+                // Level 1: Pengenalan Sumbu X (Kanan)
+                { size: 3, start: {x:0, y:0}, end: {x:2, y:0}, walls: [], hint: "Maju ke depan 2 langkah!" },
+                
+                // Level 2: Pengenalan Sumbu Y (Bawah)
+                { size: 3, start: {x:0, y:0}, end: {x:0, y:2}, walls: [], hint: "Arahkan robot ke bawah." },
+                
+                // Level 3: Kombinasi L (Siku-siku)
+                { size: 3, start: {x:0, y:0}, end: {x:2, y:2}, walls: [], hint: "Jalan ke kanan, lalu turun ke bawah!" },
+                
+                // Level 4: Halangan Pertama (Blokir satu jalur)
+                { 
+                    size: 3, 
+                    start: {x:0, y:0}, 
+                    end: {x:2, y:0}, 
+                    walls: [{x:1, y:0}], 
+                    hint: "Ada tembok! Kamu harus memutar lewat bawah." 
+                },
+                
+                // Level 5: Zig-Zag (Belajar pola)
+                { 
+                    size: 4, 
+                    start: {x:0, y:0}, 
+                    end: {x:2, y:2}, 
+                    walls: [{x:1, y:0}, {x:1, y:2}, {x:0, y:2}], 
+                    hint: "Ikuti jalur yang terbuka seperti tangga." 
+                },
+                
+                // Level 6: Labirin Sederhana (U-Turn)
+                { 
+                    size: 4, 
+                    start: {x:0, y:0}, 
+                    end: {x:0, y:1}, 
+                    walls: [{x:1, y:0}, {x:2, y:0}, {x:3, y:0}, {x:3, y:1}, {x:3, y:2}, {x:1, y:2}, {x:0, y:2}], 
+                    hint: "Ups, jalurnya memutar jauh!" 
+                },
+                
+                // Level 7: Diagonal Terblokir (Problem Solving)
+                { 
+                    size: 4, 
+                    start: {x:0, y:3}, 
+                    end: {x:3, y:0}, 
+                    walls: [{x:1, y:1}, {x:2, y:2}, {x:1, y:2}], 
+                    hint: "Cari celah di antara tembok." 
+                }
             ],
 
             init: function() {
@@ -437,22 +495,87 @@
             },
             
             generateMathData: function() {
-                const types = ['add', 'sub', 'mul'];
+                // Menambah tipe: div (pembagian), missing (titik kosong), compare (perbandingan)
+                const types = ['add', 'sub', 'mul', 'div', 'missing', 'compare'];
                 const type = types[Math.floor(Math.random() * types.length)];
-                let a, b, answer, operator;
+                let a, b, answer, operator, text, hint;
+
                 if (type === 'add') {
-                    a = Math.floor(Math.random() * 20) + 1; b = Math.floor(Math.random() * 20) + 1; answer = a + b; operator = "+";
+                    a = Math.floor(Math.random() * 50) + 10; 
+                    b = Math.floor(Math.random() * 50) + 10; 
+                    answer = a + b; 
+                    operator = "+";
+                    text = `${a} ${operator} ${b} = ?`;
+                    hint = "Jumlahkan puluhan dulu baru satuannya!";
+
                 } else if (type === 'sub') {
-                    a = Math.floor(Math.random() * 20) + 5; b = Math.floor(Math.random() * a); answer = a - b; operator = "-";
-                } else {
-                    a = Math.floor(Math.random() * 8) + 1; b = Math.floor(Math.random() * 8) + 1; answer = a * b; operator = "×";
+                    a = Math.floor(Math.random() * 80) + 20; 
+                    b = Math.floor(Math.random() * a); 
+                    answer = a - b; 
+                    operator = "-";
+                    text = `${a} ${operator} ${b} = ?`;
+                    hint = "Jangan lupa teknik meminjam jika angka belakang lebih kecil.";
+
+                } else if (type === 'mul') {
+                    a = Math.floor(Math.random() * 12) + 2; 
+                    b = Math.floor(Math.random() * 10) + 2; 
+                    answer = a * b; 
+                    operator = "×";
+                    text = `${a} ${operator} ${b} = ?`;
+                    hint = "Ingat tabel perkalianmu!";
+
+                } else if (type === 'div') {
+                    // Logika pembagian: buat angka bulat (b * answer = a)
+                    b = Math.floor(Math.random() * 9) + 2;
+                    answer = Math.floor(Math.random() * 10) + 1;
+                    a = b * answer; 
+                    operator = "÷";
+                    text = `${a} ${operator} ${b} = ?`;
+                    hint = "Pembagian adalah kebalikan dari perkalian.";
+
+                } else if (type === 'missing') {
+                    // Soal titik kosong: 15 + ? = 25
+                    a = Math.floor(Math.random() * 20) + 5;
+                    answer = Math.floor(Math.random() * 20) + 1;
+                    let c = a + answer;
+                    text = `${a} + ... = ${c}`;
+                    hint = "Angka berapa yang jika ditambah bisa jadi hasilnya?";
+
+                } else if (type === 'compare') {
+                    // Soal perbandingan: 12 ... 20 (pilihan: <, >, =)
+                    a = Math.floor(Math.random() * 50);
+                    b = Math.floor(Math.random() * 50);
+                    text = `${a} ... ${b}`;
+                    hint = "Manakah angka yang lebih besar?";
+                    
+                    // Khusus tipe ini, options dan answer berbeda
+                    if (a < b) answer = "<";
+                    else if (a > b) answer = ">";
+                    else answer = "=";
+                    
+                    return { 
+                        text: text, 
+                        hint: hint, 
+                        options: ["<", ">", "="], 
+                        answer: answer 
+                    };
                 }
+
+                // Generator opsi salah untuk angka
                 let options = [answer];
                 while (options.length < 4) {
-                    let wrong = answer + Math.floor(Math.random() * 10) - 5;
-                    if (wrong !== answer && wrong >= 0 && !options.includes(wrong)) options.push(wrong);
+                    let wrong = answer + (Math.floor(Math.random() * 10) - 5);
+                    if (wrong !== answer && wrong >= 0 && !options.includes(wrong)) {
+                        options.push(wrong);
+                    }
                 }
-                return { text: `${a} ${operator} ${b} = ?`, hint: "Hitung dengan teliti", options: options.sort(() => Math.random() - 0.5), answer: answer };
+
+                return { 
+                    text: text, 
+                    hint: hint, 
+                    options: options.sort(() => Math.random() - 0.5), 
+                    answer: answer 
+                };
             },
 
             generateEnglishData: function() {
@@ -779,6 +902,17 @@
         };
 
         window.onload = function() { app.init(); };
+
+         // --- KODE REGISTRASI SERVICE WORKER (PENTING) ---
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
     </script>
 </body>
 </html>
